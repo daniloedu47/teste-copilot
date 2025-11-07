@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarroCerto</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000000;
+      color: #333;
+    }
+
+    header {
+      background-color: #d0353b;
+      color: rgb(0, 0, 0);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      font-family: Serif;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background-color: #000000;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #c7c7c7;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #c7c7c7;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: #d0353b;
+      border: 2px solid #c40000;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      border-bottom: 2px solid #c40000;
+    }
+
+    .card h3 {
+      padding: 1rem;
+      color: #000000;
+    }
+
+    footer {
+      background-color: #222;
+      color: rgb(0, 0, 0);
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">🚗 CarroCerto</div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Veículos</a></li>
+        <li><a href="#">Agendar</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Compre fácil. Dirija feliz.</h1>
+    <p>Conectando você ao veículo ideal.</p>
+  </section>
+
+  <section class="cards">
+    <div class="card">
+      <img src="carroesportivo.png" alt="Carro Esportivo" />
+      <h3>Carro Esportivo</h3>
+    </div>
+    <div class="card">
+      <img src="jetski.png" alt="Jet Ski" />
+      <h3>Jet Ski</h3>
+    </div>
+    <div class="card">
+      <img src="motoesportiva.png" alt="Moto Esportiva" />
+      <h3>Moto Esportiva</h3>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 CarroCerto. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
