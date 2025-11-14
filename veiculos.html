@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CarroCerto — Compre fácil. Dirija feliz.</title>
+  <style>
+    :root {
+      --red-700: #c1121f;
+      --red-800: #a50e19;
+      --red-900: #7d0b14;
+      --black: #0d0d0d;
+      --gray-100: #f5f5f7;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --card-bg: #141414;
+      --border: #242424;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--black);
+      color: var(--gray-100);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      line-height: 1.5;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(180deg, var(--red-700), var(--red-800));
+      border-bottom: 1px solid var(--red-900);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+    }
+    .brand .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--red-800);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+    .menu {
+      display: flex;
+      gap: 20px;
+    }
+    .menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 10px;
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.06s;
+    }
+    .menu a:hover { background: rgba(255,255,255,0.12); }
+    .menu a:active { transform: translateY(1px); }
+
+    /* Hero */
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 20px 8px;
+      text-align: left;
+    }
+    .hero h1 {
+      margin: 0 0 8px 0;
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+    }
+    .hero p {
+      margin: 0;
+      color: var(--gray-300);
+      font-size: clamp(16px, 2.2vw, 18px);
+    }
+
+    /* Catalog */
+    .catalog {
+      max-width: 1100px;
+      margin: 16px auto 40px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+      transition: transform 0.12s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 24px rgba(0,0,0,0.3);
+      border-color: #2e2e2e;
+    }
+
+    .card-media {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #1a1a1a;
+      overflow: hidden;
+    }
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: var(--red-700);
+      color: #fff;
+      padding: 10px 14px;
+      font-weight: 700;
+      border-top-right-radius: 10px;
+    }
+
+    .card-content {
+      padding: 14px 16px 16px;
+      display: grid;
+      gap: 8px;
+    }
+    .title {
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .meta {
+      color: var(--gray-300);
+      font-size: 14px;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .btn {
+      appearance: none;
+      border: 1px solid #2e2e2e;
+      background: #171717;
+      color: #fff;
+      font-weight: 700;
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, transform 0.06s;
+    }
+    .btn-primary {
+      background: var(--red-700);
+      border-color: var(--red-800);
+    }
+    .btn:hover { background: #1e1e1e; border-color: #3a3a3a; }
+    .btn-primary:hover { background: var(--red-800); border-color: var(--red-900); }
+    .btn:active { transform: translateY(1px); }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(180deg, var(--red-800), var(--red-900));
+      color: #fff;
+      border-top: 1px solid #5c0e15;
+      margin-top: 40px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="brand">
+      <div class="logo">CC</div>
+      <div>CarroCerto</div>
+    </div>
+    <div class="menu">
+      <a href="#">Home</a>
+      <a href="#">Veículos</a>
+      <a href="#">Agenda</a>
+      <a href="#">Blog</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Compre fácil. Dirija feliz.</h1>
+  <p>Conectando você ao veículo ideal.</p>
+</section>
+
+<main class="catalog">
+
+  <!-- 1. Carro Esportivo -->
+  <article class="card">
+    <div class="card-media">
+      <img src="carroesportivo.jpg" alt="Carro esportivo">
+      <span class="label">Carro Esportivo</span>
+    </div>
+    <div class="card-content">
+      <div>
+        <div class="title">Coupe Turbo 2.0</div>
+        <div class="meta">2022 • 30.000 km • Automático • Gasolina</div>
+      </div>
+      <div class="actions">
+        <button class="btn">Detalhes</button>
+        <button class="btn btn-primary">Agendar</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 2. Sedan -->
+  <article class="card">
+    <div class="card-media">
+      <img src="carrobranco.png" alt="Sedan Confort">
+      <span class="label">Sedan</span>
+    </div>
+    <div class="card-content">
+      <div>
+        <div class="title">Sedan Confort 1.6</div>
+        <div class="meta">2021 • 42.000 km • Automático • Flex</div>
+      </div>
+      <div class="actions">
+        <button class="btn">Detalhes</button>
+        <button class="btn btn-primary">Agendar</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 3. SUV -->
+  <article class="card">
+    <div class="card-media">
+      <img src="jeep.jpg" alt="SUV Adventure">
+      <span class="label">SUV</span>
+    </div>
+    <div class="card-content">
+      <div>
+        <div class="title">SUV Adventure 2.0 4x4</div>
+        <div class="meta">2020 • 55.000 km • Automático • Diesel</div>
+      </div>
+      <div class="actions">
+        <button class="btn">Detalhes</button>
+        <button class="btn btn-primary">Agendar</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 4. Hatch -->
+  <article class="card">
+    <div class="card-media">
+      <img src="argo.webp" alt="Hatch Urban">
+      <span class="label">Hatch</span>
+    </div>
+    <div class="card-content">
+      <div>
+        <div class="title">Hatch Urban 1.0</div>
+        <div class="meta">2022 • 18.500 km • Manual • Flex</div>
+      </div>
+      <div class="actions">
+        <button class="btn">Detalhes</button>
+        <button class="btn btn-primary">Agendar</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 5. Picape -->
+  <article class="card">
+    <div class="card-media">
+      <img src="carroazul.webp" alt="Picape Work">
+      <span class="label">Picape</span>
+    </div>
+    <div class="card-content">
+      <div>
+        <div class="title">Picape Work 2.2</div>
+        <div class="meta">2019 • 68.000 km • Manual • Diesel</div>
+      </div>
+      <div class="actions">
+        <button class="btn">Detalhes</button>
+        <button class="btn btn-primary">Agendar</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 6. Jet Ski -->
+  <article class="card">
+    <div class="card-media">
+      <img src="jetazul.avif" alt="Jet Ski Wave">
+      <span class="label">Jet Ski</span>
+    </div>
+    <div class="card-content">
+      <div>
+        <div class="title">Jet Ski Wave 160</div>
+        <div class="meta">2018 • 120 h • Automático • Gasolina</div>
+      </div>
+      <div class="actions">
+        <button class="btn">Detalhes</button>
+        <button class="btn btn-primary">Agendar</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 7. Moto Esportiva -->
+  <article class="card">
+    <div class="card-media">
+      <img src="motopreta.webp" alt="Moto Sport 600R">
+      <span class="label">Moto Esportiva</span>
+    </div>
+    <div class="card-content">
+      <div>
+        <div class="title">Moto Sport 600R</div>
+        <div class="meta">2023 • 8.000 km • Manual • Gasolina</div>
+      </div>
+      <div class="actions">
+        <button class="btn">Detalhes</button>
+        <button class="btn btn-primary">Agendar</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 8. Scooter -->
+  <article class="card">
+    <div class="card-media">
+      <img src="Yamaha-NEO-125-2-1024x682.avif" alt="Scooter City 125">
+      <span class="label">Scooter</span>
+    </div>
+    <div class="card-content">
+      <div>
+        <div class="title">Scooter City 125</div>
+        <div class="meta">2020 • 12.000 km • Automático • Gasolina</div>
+      </div>
+      <div class="actions">
+        <button class="btn">Detalhes</button>
+        <button class="btn btn-primary">Agendar</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 9. Quadriciclo -->
+  <article class="card">
+    <div class="card-media">
+      <img src="D_NQ_NP_802828-MLB87896374425_072025-O.webp" alt="ATV Trail 450">
+      <span class="label">Quadriciclo</span>
+    </div>
+    <div class="card-content">
+      <div>
+        <div class="title">ATV Trail 450</div>
+        <div class="meta">2017 • 300 h • Automático • Gasolina</div>
+      </div>
+      <div class="actions">
+        <button class="btn">Detalhes</button>
+        <button class="btn btn-primary">Agendar</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 10. Caminhão -->
+  <article class="card">
+    <div class="card-media">
+      <img src="caminhao_cargo_1933_tractor_gran.webp" alt="Truck Cargo 8x2">
+      <span class="label">Caminhão</span>
+    </div>
+    <div class="card-content">
+      <div>
+        <div class="title">Truck Cargo 8x2</div>
+        <div class="meta">2016 • 220.000 km • Manual • Diesel</div>
+      </div>
+      <div class="actions">
+        <button class="btn">Detalhes</button>
+        <button class="btn btn-primary">Agendar</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 11. Van -->
+  <article class="card">
+    <div class="card-media">
+      <img src="maxresdefault.jpg" alt="Van Tour 2.3">
+      <span class="label">Van</span>
+    </div>
+    <div class="card-content">
+      <div>
+        <div class="title">Van Tour 2.3</div>
+        <div class="meta">2019 • 95.000 km • Manual • Diesel</div>
+      </div>
+      <div class="actions">
+        <button class="btn">Detalhes</button>
+        <button class="btn btn-primary">Agendar</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 12. Bicicleta Elétrica -->
+  <article class="card">
+    <div class="card-media">
+      <img src="bicicleta_eletrica_oggi_streetgo_20_s12_tourney_7v_grafite_2024_14653_1_d310ab61115c86011b3b938dd084c7c1.webp" alt="E-Bike Urban Pro">
+      <span class="label">Bicicleta Elétrica</span>
+    </div>
+    <div class="card-content">
+      <div>
+        <div class="title">E-Bike Urban Pro</div>
+        <div class="meta">2024 • 500 km • Automático • Elétrica</div>
+      </div>
+      <div class="actions">
+        <button class="btn">Detalhes</button>
+        <button class="btn btn-primary">Agendar</button>
+      </div>
+    </div>
+  </article>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© 2025 CarroCerto — Curitiba, PR</div>
+    <div>Termos • Privacidade • Contato</div>
+  </div>
+</footer>
+
+</body>
+</html>
